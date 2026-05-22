@@ -340,7 +340,7 @@
         </div>
         <div class="logo-text">
           <h1>DevToolkit Hub</h1>
-          <span>developer's essential arsenal</span>
+          <span>developer's essential toolkit</span>
         </div>
       </div>
       <button class="theme-toggle" id="darkModeToggle">
@@ -376,9 +376,8 @@
   </footer>
 
   <script>
-    // ---------- EXPANDED TOOL DATABASE (including requested tools) ----------
+    // ---------- EXPANDED TOOL DATABASE (SQL Fiddle and Mocky removed, added Internet Archive) ----------
     const toolsDatabase = [
-      // === existing tools (core) ===
       { id: 1, name: "JSON Formatter & Validator", description: "Beautify, minify, validate and lint JSON data instantly with syntax highlighting.", category: "Code Utilities", url: "https://jsonformatter.org/", icon: "fa-brackets-curly" },
       { id: 2, name: "Regex101", description: "Build, test and debug regular expressions with detailed explanation and quick reference.", category: "Regex Tools", url: "https://regex101.com/", icon: "fa-terminal" },
       { id: 3, name: "Prettier Playground", description: "Opinionated code formatter for JS, CSS, HTML, JSON, Markdown, and more.", category: "Code Utilities", url: "https://prettier.io/playground/", icon: "fa-magic" },
@@ -399,18 +398,18 @@
       { id: 18, name: "Base64 Encoder/Decoder", description: "Encode and decode strings to base64 format quickly.", category: "Dev Utilities", url: "https://www.base64decode.org/", icon: "fa-exchange-alt" },
       { id: 19, name: "Diff Checker", description: "Compare text, JSON, code files or images side-by-side.", category: "Dev Utilities", url: "https://www.diffchecker.com/", icon: "fa-code-compare" },
       { id: 20, name: "DB Diagram", description: "Draw Entity-Relationship diagrams and generate SQL DDL instantly.", category: "Database", url: "https://dbdiagram.io/", icon: "fa-diagram-project" },
-      { id: 21, name: "SQL Fiddle", description: "Test SQL queries across different DBMS (MySQL, Postgres, SQLite).", category: "Database", url: "http://sqlfiddle.com/", icon: "fa-table" },
-      { id: 22, name: "Mocky", description: "Mock HTTP responses and test endpoints without a real backend.", category: "API Tools", url: "https://designer.mocky.io/", icon: "fa-laptop-code" },
-      { id: 23, name: "ReqBin", description: "Online API testing: inspect requests, headers, and response logs.", category: "API Tools", url: "https://reqbin.com/", icon: "fa-share" },
-      
-      // ========== NEW REQUESTED TOOLS ==========
-      { id: 24, name: "GetConvertor", description: "Universal file & media converter: compress images, video, audio, documents, and e-books. Supports dozens of formats.", category: "Converters & Utilities", url: "https://getconvertor.com/", icon: "fa-file-arrow-up" },
-      { id: 25, name: "Ndovesha AI", description: "AI-powered platform for content generation, code assistance, data insights, and smart automation workflows.", category: "AI & Machine Learning", url: "https://ndovesha.ai/", icon: "fa-brain" },
-      { id: 26, name: "Savanna Fibre Speedtest", description: "Internet speed testing tool by Savanna Fibre — measure ping, download/upload speed, and network reliability (Kenya based).", category: "Network & Speed", url: "https://savannafibre.co.ke/speedtest.php", icon: "fa-tachometer-alt" },
-      { id: 27, name: "Lovable.ai", description: "Generative AI assistant for rapid prototyping, design suggestions and conversational development help.", category: "AI & Machine Learning", url: "https://lovable.ai/", icon: "fa-robot" },
+      // SQL Fiddle (id:21) and Mocky (id:22) have been removed
+      { id: 21, name: "ReqBin", description: "Online API testing: inspect requests, headers, and response logs.", category: "API Tools", url: "https://reqbin.com/", icon: "fa-share" },
+      { id: 22, name: "GetConvertor", description: "Universal file & media converter: compress images, video, audio, documents, and e-books. Supports dozens of formats.", category: "Converters & Utilities", url: "https://getconvertor.com/", icon: "fa-file-arrow-up" },
+      { id: 23, name: "Ndovesha AI", description: "AI-powered platform for content generation, code assistance, data insights, and smart automation workflows.", category: "AI & Machine Learning", url: "https://ndovesha.ai/", icon: "fa-brain" },
+      { id: 24, name: "Savanna Fibre Speedtest", description: "Internet speed testing tool by Savanna Fibre — measure ping, download/upload speed, and network reliability (Kenya based).", category: "Network & Speed", url: "https://savannafibre.co.ke/speedtest.php", icon: "fa-tachometer-alt" },
+      { id: 25, name: "Lovable.ai", description: "Generative AI assistant for rapid prototyping, design suggestions and conversational development help.", category: "AI & Machine Learning", url: "https://lovable.ai/", icon: "fa-robot" },
       
       // additional bonus: developer-oriented converter (free)
-      { id: 28, name: "CyberChef", description: "The cyber Swiss army knife — encryption, encoding, compression, data analysis, and format conversion.", category: "Dev Utilities", url: "https://gchq.github.io/CyberChef/", icon: "fa-kitchen-set" }
+      { id: 26, name: "CyberChef", description: "The cyber Swiss army knife — encryption, encoding, compression, data analysis, and format conversion.", category: "Dev Utilities", url: "https://gchq.github.io/CyberChef/", icon: "fa-kitchen-set" },
+      
+      // NEW: Internet Archive (archive.org) - essential for developers for historical research, API access, and digital preservation
+      { id: 27, name: "Internet Archive", description: "Massive digital library of websites, software, books, and media. Includes Wayback Machine for viewing historical web pages and API access for automated archiving.", category: "Dev Utilities", url: "https://archive.org/", icon: "fa-archive" }
     ];
     
     // get unique categories from the extended database
@@ -465,7 +464,7 @@
       });
     }
 
-    // get icon class mapping (includes new icons for new tools)
+    // get icon class mapping (includes archive icon for Internet Archive)
     function getIconClass(iconName) {
       const iconMap = {
         "fa-brackets-curly": "fas fa-brackets-curly",
@@ -495,6 +494,7 @@
         "fa-tachometer-alt": "fas fa-tachometer-alt",
         "fa-robot": "fas fa-robot",
         "fa-kitchen-set": "fas fa-kitchen-set",
+        "fa-archive": "fas fa-archive",
         "default": "fas fa-tools"
       };
       return iconMap[iconName] || "fas fa-code";
@@ -599,6 +599,7 @@
       const categories = getUniqueCategories();
       console.log(`🚀 DevToolkit Hub loaded: ${toolsDatabase.length} tools across ${categories.length} categories.`);
       console.log(`📄 Footer notice: © 2026 Foxwide Company Limited — Innovation meets reliability. All rights reserved.`);
+      console.log(`📚 Added Internet Archive (archive.org) to Dev Utilities.`);
     }
     
     // initial render & event binding
