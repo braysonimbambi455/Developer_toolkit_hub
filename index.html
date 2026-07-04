@@ -378,6 +378,7 @@
 
   <script>
     // ---------- EXPANDED TOOL DATABASE WITH DETAILED DESCRIPTIONS ----------
+    // Added DocuSign, Dropbox Sign, Adobe Acrobat Online, Smallpdf / Sejda
     const toolsDatabase = [
       { id: 1, name: "JSON Formatter & Validator", description: "Beautify, minify, validate and lint JSON data with syntax highlighting. Essential for debugging API responses, config files, and detecting missing commas or brackets.", category: "Code Utilities", url: "https://jsonformatter.org/", icon: "fa-brackets-curly" },
       { id: 2, name: "Regex101", description: "Build, test, and debug regular expressions interactively. Provides detailed explanations of pattern components, real-time matching, and quick reference library.", category: "Regex Tools", url: "https://regex101.com/", icon: "fa-terminal" },
@@ -405,7 +406,12 @@
       { id: 24, name: "Savanna Fibre Speedtest", description: "Internet speed testing tool measuring ping, download/upload speeds, and network reliability. Kenya-based infrastructure testing.", category: "Network & Speed", url: "https://savannafibre.co.ke/speedtest.php", icon: "fa-tachometer-alt" },
       { id: 25, name: "Lovable.ai", description: "Generative AI assistant for rapid prototyping, design suggestions, and conversational development help. Ideal for brainstorming and UI inspiration.", category: "AI & Machine Learning", url: "https://lovable.ai/", icon: "fa-robot" },
       { id: 26, name: "CyberChef", description: "The cyber Swiss army knife — encryption (AES, DES, RSA), encoding (Base64, Hex, URL), compression, data analysis, and format conversion.", category: "Dev Utilities", url: "https://gchq.github.io/CyberChef/", icon: "fa-kitchen-set" },
-      { id: 27, name: "Internet Archive", description: "Massive digital library with Wayback Machine for historical web pages, API access for automated archiving, plus books, software, and media.", category: "Dev Utilities", url: "https://archive.org/", icon: "fa-archive" }
+      { id: 27, name: "Internet Archive", description: "Massive digital library with Wayback Machine for historical web pages, API access for automated archiving, plus books, software, and media.", category: "Dev Utilities", url: "https://archive.org/", icon: "fa-archive" },
+      // NEW TOOLS (DocuSign, Dropbox Sign, Adobe Acrobat Online, Smallpdf / Sejda)
+      { id: 28, name: "DocuSign", description: "World's leading e-signature platform: send, sign, and manage agreements securely. Integrates with CRM, HR, and legal workflows. Audit trail included.", category: "E-Sign & Docs", url: "https://www.docusign.com/", icon: "fa-file-signature" },
+      { id: 29, name: "Dropbox Sign", description: "Simple, elegant e-signature (formerly HelloSign). Request signatures, templates, and API for seamless document workflows. Integrates with Dropbox, Gmail, Slack.", category: "E-Sign & Docs", url: "https://www.dropbox.com/sign", icon: "fa-pen-square" },
+      { id: 30, name: "Adobe Acrobat Online", description: "Edit, convert, compress, sign, and fill PDFs directly in your browser. Features OCR, merge, split, and protect PDFs with password or permissions.", category: "E-Sign & Docs", url: "https://www.adobe.com/acrobat/online.html", icon: "fa-file-pdf" },
+      { id: 31, name: "Smallpdf / Sejda", description: "Unified PDF toolset: compress, merge, split, edit, convert (PDF to Word/Excel/PPT), e-sign, and OCR. Sejda offers desktop-like experience in browser.", category: "E-Sign & Docs", url: "https://smallpdf.com/", icon: "fa-file-alt" }
     ];
     
     // get unique categories from the extended database
@@ -491,6 +497,10 @@
         "fa-robot": "fas fa-robot",
         "fa-kitchen-set": "fas fa-kitchen-set",
         "fa-archive": "fas fa-archive",
+        "fa-file-signature": "fas fa-file-signature",
+        "fa-pen-square": "fas fa-pen-square",
+        "fa-file-pdf": "fas fa-file-pdf",
+        "fa-file-alt": "fas fa-file-alt",
         "default": "fas fa-tools"
       };
       return iconMap[iconName] || "fas fa-code";
@@ -608,4 +618,3 @@
   </script>
 </body>
 </html>
-```
