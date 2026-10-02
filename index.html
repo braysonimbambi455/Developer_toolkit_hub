@@ -380,6 +380,7 @@
     // ---------- EXPANDED TOOL DATABASE WITH DETAILED DESCRIPTIONS ----------
     // Added DocuSign, Dropbox Sign, Adobe Acrobat Online, Smallpdf / Sejda
     // Added Mobbin, Dribbble, VisualSitemaps, Figma, UXPin, Axure RP, Balsamiq, Sketch, ProtoPie, UXPin Forge, OpenStitch, designforge, Visily
+    // Added Gridinsoft (security suite)
     const toolsDatabase = [
       { id: 1, name: "JSON Formatter & Validator", description: "Beautify, minify, validate and lint JSON data with syntax highlighting. Essential for debugging API responses, config files, and detecting missing commas or brackets.", category: "Code Utilities", url: "https://jsonformatter.org/", icon: "fa-brackets-curly" },
       { id: 2, name: "Regex101", description: "Build, test, and debug regular expressions interactively. Provides detailed explanations of pattern components, real-time matching, and quick reference library.", category: "Regex Tools", url: "https://regex101.com/", icon: "fa-terminal" },
@@ -428,7 +429,9 @@
       { id: 41, name: "UXPin Forge", description: "An AI assistant that works with your design system's real components to generate, edit, and iterate on layouts from text prompts, URLs, or images.", category: "AI-Powered Design", url: "https://www.uxpin.com/forge", icon: "fa-wand-magic-sparkles" },
       { id: 42, name: "OpenStitch", description: "A free, open-source tool that runs locally on your machine. Describe a UI in natural language, upload a screenshot, or draw a sketch, and it will generate working HTML code. Explore ideas and create prototypes without needing cloud services.", category: "AI-Powered Design", url: "https://openstitch.ai/", icon: "fa-stitch" },
       { id: 43, name: "designforge", description: "A command-line interface (CLI) tool for generating UI designs. Supports multiple AI providers (like Vercel v0) and can generate designs in HTML, React, or even as images from simple text prompts.", category: "AI-Powered Design", url: "https://designforge.ai/", icon: "fa-terminal" },
-      { id: 44, name: "Visily", description: "An AI-powered wireframing and prototyping tool. Turns hand-drawn sketches or screenshots into editable digital wireframes and high-fidelity prototypes. Very beginner-friendly.", category: "AI-Powered Design", url: "https://www.visily.ai/", icon: "fa-paintbrush" }
+      { id: 44, name: "Visily", description: "An AI-powered wireframing and prototyping tool. Turns hand-drawn sketches or screenshots into editable digital wireframes and high-fidelity prototypes. Very beginner-friendly.", category: "AI-Powered Design", url: "https://www.visily.ai/", icon: "fa-paintbrush" },
+      // NEW: Gridinsoft security suite
+      { id: 45, name: "Gridinsoft", description: "Comprehensive security suite: anti-malware, anti-ransomware, and system protection. Features real-time scanning, behavioral analysis, and web protection. Also offers free online tools like file scanner and URL checker.", category: "Security & Antivirus", url: "https://gridinsoft.com/", icon: "fa-shield-hal" }
     ];
     
     // get unique categories from the extended database
@@ -529,6 +532,7 @@
         "fa-wand-magic-sparkles": "fas fa-wand-magic-sparkles",
         "fa-stitch": "fas fa-stitch",
         "fa-paintbrush": "fas fa-paintbrush",
+        "fa-shield-hal": "fas fa-shield-hal",   // new security icon
         "default": "fas fa-tools"
       };
       return iconMap[iconName] || "fas fa-code";
