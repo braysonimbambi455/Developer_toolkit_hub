@@ -381,6 +381,7 @@
     // Added DocuSign, Dropbox Sign, Adobe Acrobat Online, Smallpdf / Sejda
     // Added Mobbin, Dribbble, VisualSitemaps, Figma, UXPin, Axure RP, Balsamiq, Sketch, ProtoPie, UXPin Forge, OpenStitch, designforge, Visily
     // Added Gridinsoft (security suite)
+    // Added SEOStudio Tools (free online SEO, text, image, YouTube, webmaster & dev tools)
     const toolsDatabase = [
       { id: 1, name: "JSON Formatter & Validator", description: "Beautify, minify, validate and lint JSON data with syntax highlighting. Essential for debugging API responses, config files, and detecting missing commas or brackets.", category: "Code Utilities", url: "https://jsonformatter.org/", icon: "fa-brackets-curly" },
       { id: 2, name: "Regex101", description: "Build, test, and debug regular expressions interactively. Provides detailed explanations of pattern components, real-time matching, and quick reference library.", category: "Regex Tools", url: "https://regex101.com/", icon: "fa-terminal" },
@@ -431,7 +432,9 @@
       { id: 43, name: "designforge", description: "A command-line interface (CLI) tool for generating UI designs. Supports multiple AI providers (like Vercel v0) and can generate designs in HTML, React, or even as images from simple text prompts.", category: "AI-Powered Design", url: "https://designforge.ai/", icon: "fa-terminal" },
       { id: 44, name: "Visily", description: "An AI-powered wireframing and prototyping tool. Turns hand-drawn sketches or screenshots into editable digital wireframes and high-fidelity prototypes. Very beginner-friendly.", category: "AI-Powered Design", url: "https://www.visily.ai/", icon: "fa-paintbrush" },
       // NEW: Gridinsoft security suite
-      { id: 45, name: "Gridinsoft", description: "Comprehensive security suite: anti-malware, anti-ransomware, and system protection. Features real-time scanning, behavioral analysis, and web protection. Also offers free online tools like file scanner and URL checker.", category: "Security & Antivirus", url: "https://gridinsoft.com/", icon: "fa-shield-hal" }
+      { id: 45, name: "Gridinsoft", description: "Comprehensive security suite: anti-malware, anti-ransomware, and system protection. Features real-time scanning, behavioral analysis, and web protection. Also offers free online tools like file scanner and URL checker.", category: "Security & Antivirus", url: "https://gridinsoft.com/", icon: "fa-shield-hal" },
+      // NEW: SEOStudio Tools
+      { id: 46, name: "SEOStudio Tools", description: "A massive collection of 200+ free online tools for SEO, text, image, YouTube, web management, and development. Includes keyword research, backlink analysis, YouTube tag extraction, meta tag generators, and more. Used over 10 million times.", category: "SEO & Marketing", url: "https://seostudio.tools/", icon: "fa-chart-simple" }
     ];
     
     // get unique categories from the extended database
@@ -532,7 +535,8 @@
         "fa-wand-magic-sparkles": "fas fa-wand-magic-sparkles",
         "fa-stitch": "fas fa-stitch",
         "fa-paintbrush": "fas fa-paintbrush",
-        "fa-shield-hal": "fas fa-shield-hal",   // new security icon
+        "fa-shield-hal": "fas fa-shield-hal",
+        "fa-chart-simple": "fas fa-chart-simple",  // new SEO icon
         "default": "fas fa-tools"
       };
       return iconMap[iconName] || "fas fa-code";
