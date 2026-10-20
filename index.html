@@ -4,17 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>DevToolkit Hub | Essential Developer Tools + Convertors & AI</title>
-  <!-- Google Fonts & simple CSS reset -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
-  
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Inter', sans-serif;
       background: #f8fafc;
@@ -22,313 +15,65 @@
       transition: background 0.25s ease, color 0.2s ease;
       line-height: 1.5;
     }
-
-    /* dark mode styles */
-    body.dark {
-      background: #0a0c10;
-      color: #eef2ff;
-    }
-
-    /* reusable containers */
-    .container {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 0 1.8rem;
-    }
-
-    /* header & nav */
+    body.dark { background: #0a0c10; color: #eef2ff; }
+    .container { max-width: 1400px; margin: 0 auto; padding: 0 1.8rem; }
     .header {
       background: rgba(255,255,255,0.8);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid rgba(0,0,0,0.05);
-      position: sticky;
-      top: 0;
-      z-index: 100;
+      position: sticky; top: 0; z-index: 100;
       transition: background 0.2s, border-color 0.2s;
     }
-    body.dark .header {
-      background: rgba(10,12,16,0.85);
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-    }
-    .header-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 1rem;
-      padding: 1rem 0;
-    }
-    .logo-area {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .logo-icon {
-      font-size: 2rem;
-      background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-    .logo-text h1 {
-      font-size: 1.6rem;
-      font-weight: 700;
-      letter-spacing: -0.3px;
-    }
-    .logo-text span {
-      font-size: 0.8rem;
-      font-weight: 500;
-      background: #e2e8f0;
-      padding: 0.2rem 0.6rem;
-      border-radius: 30px;
-      color: #1e293b;
-    }
-    body.dark .logo-text span {
-      background: #1e293b;
-      color: #cbd5e1;
-    }
-    .theme-toggle {
-      background: #eef2ff;
-      border: none;
-      padding: 0.6rem 1rem;
-      border-radius: 40px;
-      font-weight: 500;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 0.9rem;
-      transition: 0.2s;
-    }
-    body.dark .theme-toggle {
-      background: #1e293b;
-      color: #f1f5f9;
-    }
-    .theme-toggle i {
-      font-size: 1rem;
-    }
-    .search-section {
-      margin: 2rem 0 1.5rem 0;
-    }
-    .search-wrapper {
-      position: relative;
-      max-width: 500px;
-    }
-    .search-wrapper i {
-      position: absolute;
-      left: 1rem;
-      top: 50%;
-      transform: translateY(-50%);
-      color: #94a3b8;
-    }
-    #searchInput {
-      width: 100%;
-      padding: 0.9rem 1rem 0.9rem 2.8rem;
-      border-radius: 60px;
-      border: 1px solid #e2e8f0;
-      background: white;
-      font-size: 1rem;
-      font-family: inherit;
-      transition: 0.2s;
-      box-shadow: 0 1px 2px rgba(0,0,0,0.02);
-    }
-    body.dark #searchInput {
-      background: #11151c;
-      border-color: #2d3a4e;
-      color: #f0f4fa;
-    }
-    #searchInput:focus {
-      outline: none;
-      border-color: #3b82f6;
-      box-shadow: 0 0 0 3px rgba(59,130,246,0.2);
-    }
-    .category-filters {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.7rem;
-      margin: 1.2rem 0 2rem 0;
-      border-bottom: 1px solid #e2e8f0;
-      padding-bottom: 0.8rem;
-    }
-    body.dark .category-filters {
-      border-bottom-color: #2d3a4e;
-    }
-    .filter-btn {
-      background: transparent;
-      border: none;
-      padding: 0.5rem 1.2rem;
-      border-radius: 40px;
-      font-weight: 500;
-      font-size: 0.85rem;
-      cursor: pointer;
-      transition: all 0.2s;
-      color: #475569;
-    }
-    body.dark .filter-btn {
-      color: #cbd5e1;
-    }
-    .filter-btn.active {
-      background: #3b82f6;
-      color: white;
-      box-shadow: 0 2px 8px rgba(59,130,246,0.3);
-    }
-    .filter-btn:hover:not(.active) {
-      background: #e2e8f0;
-    }
-    body.dark .filter-btn:hover:not(.active) {
-      background: #1e293b;
-    }
-    /* toolkit grid */
-    .tools-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-      gap: 1.8rem;
-      margin: 2rem 0 3rem;
-    }
-    .tool-card {
-      background: white;
-      border-radius: 24px;
-      padding: 1.5rem;
-      transition: transform 0.2s ease, box-shadow 0.2s, background 0.2s;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.03), 0 1px 2px rgba(0,0,0,0.05);
-      border: 1px solid #eef2ff;
-      display: flex;
-      flex-direction: column;
-    }
-    body.dark .tool-card {
-      background: #11151c;
-      border-color: #232a33;
-      box-shadow: 0 5px 12px rgba(0,0,0,0.3);
-    }
-    .tool-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 20px 25px -12px rgba(0,0,0,0.1);
-      border-color: #cbd5e1;
-    }
-    body.dark .tool-card:hover {
-      border-color: #4b5563;
-    }
-    .tool-icon {
-      font-size: 2.2rem;
-      background: linear-gradient(145deg, #3b82f6, #a855f7);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      width: fit-content;
-      margin-bottom: 1rem;
-    }
-    .tool-title {
-      font-size: 1.35rem;
-      font-weight: 700;
-      letter-spacing: -0.2px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
-    .tool-badge {
-      font-size: 0.7rem;
-      background: #f1f5f9;
-      padding: 0.2rem 0.7rem;
-      border-radius: 20px;
-      font-weight: 500;
-      color: #1e293b;
-    }
-    body.dark .tool-badge {
-      background: #1f2a3a;
-      color: #b9cadf;
-    }
-    .tool-desc {
-      margin: 0.7rem 0 1rem 0;
-      font-size: 0.9rem;
-      color: #475569;
-      flex: 1;
-      line-height: 1.5;
-    }
-    body.dark .tool-desc {
-      color: #cbd5e6;
-    }
-    .tool-footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 1rem;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-    .tool-link {
-      text-decoration: none;
-      font-weight: 600;
-      background: #f1f5f9;
-      padding: 0.5rem 1rem;
-      border-radius: 40px;
-      font-size: 0.8rem;
-      transition: all 0.2s;
-      color: #1f2937;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-    body.dark .tool-link {
-      background: #1e293b;
-      color: #e2e8f0;
-    }
-    .tool-link:hover {
-      background: #3b82f6;
-      color: white;
-    }
-    .tool-category {
-      font-size: 0.7rem;
-      background: #e6f0ff;
-      padding: 0.2rem 0.7rem;
-      border-radius: 30px;
-      color: #1e40af;
-    }
-    body.dark .tool-category {
-      background: #172554;
-      color: #a5c9ff;
-    }
-    .no-results {
-      text-align: center;
-      padding: 3rem;
-      font-size: 1.2rem;
-      background: #f1f5f9;
-      border-radius: 2rem;
-      margin: 2rem 0;
-    }
-    body.dark .no-results {
-      background: #11151c;
-    }
-    footer {
-      border-top: 1px solid #e2e8f0;
-      padding: 2rem 0;
-      margin-top: 1rem;
-      text-align: center;
-      font-size: 0.85rem;
-    }
-    body.dark footer {
-      border-top-color: #1e293b;
-    }
-    .footer-copyright {
-      font-weight: 500;
-      letter-spacing: 0.2px;
-      margin-top: 0.5rem;
-    }
+    body.dark .header { background: rgba(10,12,16,0.85); border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; padding: 1rem 0; }
+    .logo-area { display: flex; align-items: center; gap: 12px; }
+    .logo-icon { font-size: 2rem; background: linear-gradient(135deg, #3b82f6, #8b5cf6); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .logo-text h1 { font-size: 1.6rem; font-weight: 700; letter-spacing: -0.3px; }
+    .logo-text span { font-size: 0.8rem; font-weight: 500; background: #e2e8f0; padding: 0.2rem 0.6rem; border-radius: 30px; color: #1e293b; }
+    body.dark .logo-text span { background: #1e293b; color: #cbd5e1; }
+    .theme-toggle { background: #eef2ff; border: none; padding: 0.6rem 1rem; border-radius: 40px; font-weight: 500; cursor: pointer; display: flex; align-items: center; gap: 8px; font-size: 0.9rem; transition: 0.2s; }
+    body.dark .theme-toggle { background: #1e293b; color: #f1f5f9; }
+    .theme-toggle i { font-size: 1rem; }
+    .search-section { margin: 2rem 0 1.5rem 0; }
+    .search-wrapper { position: relative; max-width: 500px; }
+    .search-wrapper i { position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: #94a3b8; }
+    #searchInput { width: 100%; padding: 0.9rem 1rem 0.9rem 2.8rem; border-radius: 60px; border: 1px solid #e2e8f0; background: white; font-size: 1rem; font-family: inherit; transition: 0.2s; box-shadow: 0 1px 2px rgba(0,0,0,0.02); }
+    body.dark #searchInput { background: #11151c; border-color: #2d3a4e; color: #f0f4fa; }
+    #searchInput:focus { outline: none; border-color: #3b82f6; box-shadow: 0 0 0 3px rgba(59,130,246,0.2); }
+    .category-filters { display: flex; flex-wrap: wrap; gap: 0.7rem; margin: 1.2rem 0 2rem 0; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.8rem; }
+    body.dark .category-filters { border-bottom-color: #2d3a4e; }
+    .filter-btn { background: transparent; border: none; padding: 0.5rem 1.2rem; border-radius: 40px; font-weight: 500; font-size: 0.85rem; cursor: pointer; transition: all 0.2s; color: #475569; }
+    body.dark .filter-btn { color: #cbd5e1; }
+    .filter-btn.active { background: #3b82f6; color: white; box-shadow: 0 2px 8px rgba(59,130,246,0.3); }
+    .filter-btn:hover:not(.active) { background: #e2e8f0; }
+    body.dark .filter-btn:hover:not(.active) { background: #1e293b; }
+    .tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 1.8rem; margin: 2rem 0 3rem; }
+    .tool-card { background: white; border-radius: 24px; padding: 1.5rem; transition: transform 0.2s ease, box-shadow 0.2s, background 0.2s; box-shadow: 0 4px 12px rgba(0,0,0,0.03), 0 1px 2px rgba(0,0,0,0.05); border: 1px solid #eef2ff; display: flex; flex-direction: column; }
+    body.dark .tool-card { background: #11151c; border-color: #232a33; box-shadow: 0 5px 12px rgba(0,0,0,0.3); }
+    .tool-card:hover { transform: translateY(-4px); box-shadow: 0 20px 25px -12px rgba(0,0,0,0.1); border-color: #cbd5e1; }
+    body.dark .tool-card:hover { border-color: #4b5563; }
+    .tool-icon { font-size: 2.2rem; background: linear-gradient(145deg, #3b82f6, #a855f7); -webkit-background-clip: text; background-clip: text; color: transparent; width: fit-content; margin-bottom: 1rem; }
+    .tool-title { font-size: 1.35rem; font-weight: 700; letter-spacing: -0.2px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; }
+    .tool-badge { font-size: 0.7rem; background: #f1f5f9; padding: 0.2rem 0.7rem; border-radius: 20px; font-weight: 500; color: #1e293b; }
+    body.dark .tool-badge { background: #1f2a3a; color: #b9cadf; }
+    .tool-desc { margin: 0.7rem 0 1rem 0; font-size: 0.9rem; color: #475569; flex: 1; line-height: 1.5; }
+    body.dark .tool-desc { color: #cbd5e6; }
+    .tool-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 1rem; flex-wrap: wrap; gap: 8px; }
+    .tool-link { text-decoration: none; font-weight: 600; background: #f1f5f9; padding: 0.5rem 1rem; border-radius: 40px; font-size: 0.8rem; transition: all 0.2s; color: #1f2937; display: inline-flex; align-items: center; gap: 8px; }
+    body.dark .tool-link { background: #1e293b; color: #e2e8f0; }
+    .tool-link:hover { background: #3b82f6; color: white; }
+    .tool-category { font-size: 0.7rem; background: #e6f0ff; padding: 0.2rem 0.7rem; border-radius: 30px; color: #1e40af; }
+    body.dark .tool-category { background: #172554; color: #a5c9ff; }
+    .no-results { text-align: center; padding: 3rem; font-size: 1.2rem; background: #f1f5f9; border-radius: 2rem; margin: 2rem 0; }
+    body.dark .no-results { background: #11151c; }
+    footer { border-top: 1px solid #e2e8f0; padding: 2rem 0; margin-top: 1rem; text-align: center; font-size: 0.85rem; }
+    body.dark footer { border-top-color: #1e293b; }
+    .footer-copyright { font-weight: 500; letter-spacing: 0.2px; margin-top: 0.5rem; }
     @media (max-width: 680px) {
-      .container {
-        padding: 0 1.2rem;
-      }
-      .tools-grid {
-        grid-template-columns: 1fr;
-      }
-      .header-inner {
-        flex-direction: column;
-        align-items: stretch;
-      }
-      .theme-toggle {
-        align-self: flex-start;
-      }
+      .container { padding: 0 1.2rem; }
+      .tools-grid { grid-template-columns: 1fr; }
+      .header-inner { flex-direction: column; align-items: stretch; }
+      .theme-toggle { align-self: flex-start; }
     }
   </style>
 </head>
@@ -336,17 +81,14 @@
   <div class="header">
     <div class="container header-inner">
       <div class="logo-area">
-        <div class="logo-icon">
-          <i class="fas fa-toolbox"></i>
-        </div>
+        <div class="logo-icon"><i class="fas fa-toolbox"></i></div>
         <div class="logo-text">
           <h1>DevToolkit Hub</h1>
           <span>developer's essential toolkit</span>
         </div>
       </div>
       <button class="theme-toggle" id="darkModeToggle">
-        <i class="fas fa-moon"></i> 
-        <span>Dark mode</span>
+        <i class="fas fa-moon"></i><span>Dark mode</span>
       </button>
     </div>
   </div>
@@ -358,14 +100,8 @@
         <input type="text" id="searchInput" placeholder="Search tools by name, description or category...">
       </div>
     </div>
-    
-    <div class="category-filters" id="categoryFiltersContainer">
-      <!-- dynamic filter buttons appear here -->
-    </div>
-
-    <div id="toolsGridContainer" class="tools-grid">
-      <!-- Cards injected via JS -->
-    </div>
+    <div class="category-filters" id="categoryFiltersContainer"></div>
+    <div id="toolsGridContainer" class="tools-grid"></div>
   </main>
 
   <footer>
@@ -377,8 +113,6 @@
   </footer>
 
   <script>
-    // ---------- EXPANDED TOOL DATABASE WITH DETAILED DESCRIPTIONS ----------
-    // Added all 50 tools from the "internet's hidden toolbox" list
     const toolsDatabase = [
       // ===== ORIGINAL TOOLS =====
       { id: 1, name: "JSON Formatter & Validator", description: "Beautify, minify, validate and lint JSON data with syntax highlighting. Essential for debugging API responses, config files, and detecting missing commas or brackets.", category: "Code Utilities", url: "https://jsonformatter.org/", icon: "fa-brackets-curly" },
@@ -412,7 +146,7 @@
       { id: 28, name: "DocuSign", description: "World's leading e-signature platform: send, sign, and manage agreements securely. Integrates with CRM, HR, and legal workflows. Audit trail included.", category: "E-Sign & Docs", url: "https://www.docusign.com/", icon: "fa-file-signature" },
       { id: 29, name: "Dropbox Sign", description: "Simple, elegant e-signature (formerly HelloSign). Request signatures, templates, and API for seamless document workflows. Integrates with Dropbox, Gmail, Slack.", category: "E-Sign & Docs", url: "https://www.dropbox.com/sign", icon: "fa-pen-square" },
       { id: 30, name: "Adobe Acrobat Online", description: "Edit, convert, compress, sign, and fill PDFs directly in your browser. Features OCR, merge, split, and protect PDFs with password or permissions.", category: "E-Sign & Docs", url: "https://www.adobe.com/acrobat/online.html", icon: "fa-file-pdf" },
-      { id: 31, name: "Smallpdf / Sejda", description: "Unified PDF toolset: compress, merge, split, edit, convert (PDF to Word/Excel/PPT), e-sign, and OCR. Sejda offers desktop-like experience in browser.", category: "E-Sign & Docs", url: "https://smallpdf.com/", icon: "fa-file-alt" },
+      { id: 31, name: "Sejda PDF", description: "Desktop-like PDF editing in the browser. Edit text, merge, split, compress, convert, sign, and OCR PDFs. No watermarks, generous free tier.", category: "E-Sign & Docs", url: "https://www.sejda.com/", icon: "fa-file-alt" },
       // Design Tools
       { id: 32, name: "Mobbin", description: "A vast reference library of real-world UI patterns and user flows from top apps. Perfect for benchmarking competitors and finding proven design solutions.", category: "Design & UX", url: "https://mobbin.com/", icon: "fa-mobile-screen" },
       { id: 33, name: "Dribbble", description: "A community for designers to share visual concepts. Great for exploring cutting-edge aesthetics, micro-interactions, and mood boards during the early creative stages.", category: "Design & UX", url: "https://dribbble.com/", icon: "fa-basketball" },
@@ -434,75 +168,106 @@
       // SEO
       { id: 46, name: "SEOStudio Tools", description: "A massive collection of 200+ free online tools for SEO, text, image, YouTube, web management, and development. Includes keyword research, backlink analysis, YouTube tag extraction, meta tag generators, and more. Used over 10 million times.", category: "SEO & Marketing", url: "https://seostudio.tools/", icon: "fa-chart-simple" },
 
-      // ===== NEW TOOLS FROM "50 WEBSITES THAT FEEL LIKE THE INTERNET'S HIDDEN TOOLBOX" =====
-      
-      // Free Research & Books
+      // ===== 50 TOOLS FROM "THE INTERNET'S HIDDEN TOOLBOX" =====
+      // 1. Free research papers
       { id: 47, name: "Unpaywall", description: "Free research papers. Browser extension that finds legal, free versions of paywalled academic articles. Access millions of open-access papers instantly.", category: "Research & Academia", url: "https://unpaywall.org/", icon: "fa-unlock" },
+      // 2. Borrow books online
       { id: 48, name: "Open Library", description: "Borrow books online from the Internet Archive's massive catalog. Over 3 million books available for free borrowing, including classics and modern titles.", category: "Research & Academia", url: "https://openlibrary.org/", icon: "fa-book-open" },
+      // 3. Free academic journals
       { id: 49, name: "DOAJ", description: "Directory of Open Access Journals. Find free academic journals across all disciplines. Quality-controlled, peer-reviewed open access research.", category: "Research & Academia", url: "https://doaj.org/", icon: "fa-journal-whills" },
-      { id: 50, name: "Project Gutenberg", description: "70,000+ free books. The original digital library with classic literature, historical texts, and public domain works in multiple formats (ePub, Kindle, HTML).", category: "Research & Academia", url: "https://gutenberg.org/", icon: "fa-book" },
-      { id: 51, name: "OpenStax", description: "Free textbooks from Rice University. Peer-reviewed, openly licensed college textbooks for high-enrollment courses. Save thousands on textbook costs.", category: "Research & Academia", url: "https://openstax.org/", icon: "fa-graduation-cap" },
-      { id: 52, name: "Open Culture", description: "Free courses, audiobooks, movies, language lessons, and e-books from top universities. Curated collection of 1,700+ free online courses.", category: "Research & Academia", url: "https://openculture.com/", icon: "fa-landmark" },
-
-      // App Alternatives & Streaming
-      { id: 53, name: "AlternativeTo", description: "Find app alternatives for any software. Crowdsourced recommendations for free, open-source, or paid alternatives across all platforms.", category: "App Discovery", url: "https://alternativeto.net/", icon: "fa-arrows-rotate" },
-      { id: 54, name: "JustWatch", description: "Find where to stream any movie or TV show. Aggregates streaming availability across Netflix, Prime, Disney+, Hulu, and 400+ services worldwide.", category: "Entertainment", url: "https://justwatch.com/", icon: "fa-tv" },
-
-      // Problem Solving & AI
+      // 4. App alternatives
+      { id: 50, name: "AlternativeTo", description: "Find app alternatives for any software. Crowdsourced recommendations for free, open-source, or paid alternatives across all platforms.", category: "App Discovery", url: "https://alternativeto.net/", icon: "fa-arrows-rotate" },
+      // 5. Find where to stream
+      { id: 51, name: "JustWatch", description: "Find where to stream any movie or TV show. Aggregates streaming availability across Netflix, Prime, Disney+, Hulu, and 400+ services worldwide.", category: "Entertainment", url: "https://justwatch.com/", icon: "fa-tv" },
+      // 6. Internet archives — already id 27 (Internet Archive) — kept above
+      // 7. 70K+ free books
+      { id: 52, name: "Project Gutenberg", description: "70,000+ free books. The original digital library with classic literature, historical texts, and public domain works in multiple formats (ePub, Kindle, HTML).", category: "Research & Academia", url: "https://gutenberg.org/", icon: "fa-book" },
+      // 8. Free textbooks
+      { id: 53, name: "OpenStax", description: "Free textbooks from Rice University. Peer-reviewed, openly licensed college textbooks for high-enrollment courses. Save thousands on textbook costs.", category: "Research & Academia", url: "https://openstax.org/", icon: "fa-graduation-cap" },
+      // 9. Free courses
+      { id: 54, name: "Open Culture", description: "Free courses, audiobooks, movies, language lessons, and e-books from top universities. Curated collection of 1,700+ free online courses.", category: "Research & Academia", url: "https://openculture.com/", icon: "fa-landmark" },
+      // 10. Solve complex problems
       { id: 55, name: "Wolfram Alpha", description: "Solve complex problems with computational intelligence. Math, science, engineering, statistics, data analysis, and real-world knowledge answers.", category: "AI & Problem Solving", url: "https://wolframalpha.com/", icon: "fa-calculator" },
-      { id: 56, name: "Elicit", description: "AI research assistant that automates literature reviews. Find relevant papers, extract key information, and synthesize findings across studies.", category: "AI & Problem Solving", url: "https://elicit.org/", icon: "fa-flask" },
-      { id: 57, name: "Consensus", description: "AI-powered search engine for scientific research. Get evidence-backed answers from peer-reviewed studies with citation tracking.", category: "AI & Problem Solving", url: "https://consensus.app/", icon: "fa-check-double" },
-      { id: 58, name: "Connected Papers", description: "Explore research connections visually. Enter a paper and see a graph of related work, citations, and prior/derivative studies.", category: "AI & Problem Solving", url: "https://connectedpapers.com/", icon: "fa-project-diagram" },
-      { id: 59, name: "Semantic Scholar", description: "AI-powered academic search engine from Allen Institute. 200M+ papers with citation context, influential citations, and research feeds.", category: "AI & Problem Solving", url: "https://semanticscholar.org/", icon: "fa-search" },
-      { id: 60, name: "SciSpace", description: "Understand research papers with AI. Get explanations of complex jargon, math, and tables. Chat with PDFs and extract key insights.", category: "AI & Problem Solving", url: "https://scispace.com/", icon: "fa-comments" },
-      { id: 61, name: "Summarize.tech", description: "YouTube summaries powered by AI. Get concise summaries of long videos, lectures, and tutorials without watching the entire thing.", category: "AI & Problem Solving", url: "https://summarize.tech/", icon: "fa-scissors" },
-      { id: 62, name: "Phind", description: "AI search engine for developers. Get code answers with explanations, documentation references, and working examples for technical questions.", category: "AI & Problem Solving", url: "https://phind.com/", icon: "fa-code" },
-
-      // Image & Video Tools
-      { id: 63, name: "Photopea", description: "Photoshop alternative in your browser. Full-featured image editor with layers, masks, filters, and PSD support. Free, no installation required.", category: "Image & Video", url: "https://photopea.com/", icon: "fa-image" },
-      { id: 64, name: "Squoosh", description: "Compress images with Google's open-source tool. Compare compression algorithms visually, adjust quality, and export optimized images.", category: "Image & Video", url: "https://squoosh.app/", icon: "fa-compress" },
-      { id: 65, name: "Remove.bg", description: "Remove image backgrounds automatically with AI. One-click background removal for product photos, portraits, and graphics.", category: "Image & Video", url: "https://remove.bg/", icon: "fa-eraser" },
-      { id: 66, name: "Cleanup.pictures", description: "Remove objects, people, text, and defects from images with AI. Magic eraser tool that fills in backgrounds seamlessly.", category: "Image & Video", url: "https://cleanup.pictures/", icon: "fa-wand-magic" },
-      { id: 67, name: "Unscreen", description: "Remove video backgrounds without a green screen. AI-powered background removal for videos and GIFs, no editing skills needed.", category: "Image & Video", url: "https://unscreen.com/", icon: "fa-film" },
-      { id: 68, name: "TinyPNG / TinEye", description: "Reverse image search and image compression. Find where images appear online, check for unauthorized use, and compress images without quality loss.", category: "Image & Video", url: "https://tineye.com/", icon: "fa-magnifying-glass" },
-
-      // Code & Developer Tools
-      { id: 69, name: "Carbon", description: "Create beautiful images of your code. Customize syntax themes, fonts, backgrounds, and export for social media, presentations, or documentation.", category: "Code & Developer Tools", url: "https://carbon.now.sh/", icon: "fa-camera" },
-      { id: 70, name: "Ray.so", description: "Create elegant code screenshots. Multiple themes, padding options, and export formats. Perfect for sharing code snippets in blog posts or slides.", category: "Code & Developer Tools", url: "https://ray.so/", icon: "fa-crop" },
-      { id: 71, name: "Shots.so", description: "Create beautiful product mockups. Device frames (iPhone, MacBook, browser), gradient backgrounds, and 3D transforms for screenshots.", category: "Code & Developer Tools", url: "https://shots.so/", icon: "fa-mobile-screen" },
-      { id: 72, name: "SmartMockups", description: "Create stunning product mockups with 1000+ templates. Generate realistic device mockups from your screenshots in seconds.", category: "Code & Developer Tools", url: "https://smartmockups.com/", icon: "fa-desktop" },
-      { id: 73, name: "CodeBeautify", description: "Format, beautify, and validate code. Supports JSON, XML, HTML, CSS, JavaScript, SQL, and more. Also includes converters and minifiers.", category: "Code & Developer Tools", url: "https://codebeautify.org/", icon: "fa-broom" },
-      { id: 74, name: "Explainshell", description: "Understand terminal commands. Paste any shell command and get an explanation of each part: flags, arguments, pipes, and operators.", category: "Code & Developer Tools", url: "https://explainshell.com/", icon: "fa-terminal" },
-
-      // Privacy & Security
-      { id: 75, name: "Have I Been Pwned", description: "Check if your email or phone number has been in data breaches. 12B+ breached accounts from thousands of data leaks.", category: "Privacy & Security", url: "https://haveibeenpwned.com/", icon: "fa-shield-hal" },
-      { id: 76, name: "VirusTotal", description: "Scan files and URLs for malware with 70+ antivirus engines. Analyze suspicious files, domains, and IPs for security threats.", category: "Privacy & Security", url: "https://virustotal.com/", icon: "fa-virus" },
-      { id: 77, name: "Privnote", description: "Self-destructing notes. Send encrypted messages that self-destruct after being read. No signup, no tracking, maximum privacy.", category: "Privacy & Security", url: "https://privnote.com/", icon: "fa-note-sticky" },
-      { id: 78, name: "Temp-Mail", description: "Temporary email addresses. Disposable email for signups, verification, and spam protection. Multiple domains, no registration required.", category: "Privacy & Security", url: "https://temp-mail.org/", icon: "fa-envelope" },
-      { id: 79, name: "10MinuteMail", description: "Temporary email that lasts 10 minutes (extendable). Keep your real inbox clean from spam and unwanted newsletters.", category: "Privacy & Security", url: "https://10minutemail.com/", icon: "fa-clock" },
-      { id: 80, name: "File.io", description: "Temporary file sharing. Upload files and get a link that self-destructs after download. Encrypted storage with no account needed.", category: "Privacy & Security", url: "https://file.io/", icon: "fa-paperclip" },
-      { id: 81, name: "Archive.ph", description: "Save webpages permanently. Create snapshots of web pages that will never change. Bypass paywalls and preserve content.", category: "Privacy & Security", url: "https://archive.ph/", icon: "fa-floppy-disk" },
-
-      // Music & Audio
-      { id: 82, name: "Radio Garden", description: "Explore global radio stations on a 3D globe. Spin the world and listen to live radio from any city. 30,000+ stations worldwide.", category: "Music & Audio", url: "https://radio.garden/", icon: "fa-globe" },
-      { id: 83, name: "Every Noise", description: "Discover music genres. Interactive map of 6,000+ genres with audio samples. From vaporwave to shoegaze, explore the entire musical spectrum.", category: "Music & Audio", url: "https://everynoise.com/", icon: "fa-music" },
-      { id: 84, name: "Tunefind", description: "Find songs from TV shows and movies. Search by episode, character moment, or scene description to identify that song stuck in your head.", category: "Music & Audio", url: "https://tunefind.com/", icon: "fa-tv-music" },
-      { id: 85, name: "Music for Programming", description: "Focus music curated for coding sessions. Ambient, electronic, and instrumental mixes designed to enhance concentration and flow state.", category: "Music & Audio", url: "https://musicforprogramming.net/", icon: "fa-headphones" },
-      { id: 86, name: "myNoise", description: "Custom background sounds. 200+ sound generators (rain, keyboards, coffee shop, storms) with customizable frequency profiles for focus and relaxation.", category: "Music & Audio", url: "https://mynoise.net/", icon: "fa-sliders" },
-      { id: 87, name: "Coffitivity", description: "Café ambience for focus. Studies show moderate ambient noise boosts creative thinking. Stream coffee shop sounds while working.", category: "Music & Audio", url: "https://coffitivity.com/", icon: "fa-mug-hot" },
-
-      // Web Utilities
-      { id: 88, name: "SimilarSites", description: "Find similar websites. Enter a URL and discover related sites in the same niche. Great for competitive research and finding alternatives.", category: "Web Utilities", url: "https://similarsites.com/", icon: "fa-sitemap" },
-      { id: 89, name: "Raindrop.io", description: "Bookmark manager for the modern web. Save, organize, and share bookmarks with collections, tags, full-text search, and cross-device sync.", category: "Web Utilities", url: "https://raindrop.io/", icon: "fa-bookmark" },
-      { id: 90, name: "DownDetector", description: "Check outages and problems. Real-time status for websites, services, and apps. User-reported and monitored service outages worldwide.", category: "Web Utilities", url: "https://downdetector.com/", icon: "fa-signal" },
-      { id: 91, name: "Fast.com", description: "Internet speed test by Netflix. Simple, ad-free test measuring download speed, upload speed, and connection latency on any device.", category: "Web Utilities", url: "https://fast.com/", icon: "fa-gauge" },
+      // 11. Photoshop alternative
+      { id: 56, name: "Photopea", description: "Photoshop alternative in your browser. Full-featured image editor with layers, masks, filters, and PSD support. Free, no installation required.", category: "Image & Video", url: "https://photopea.com/", icon: "fa-image" },
+      // 12. Compress images
+      { id: 57, name: "Squoosh", description: "Compress images with Google's open-source tool. Compare compression algorithms visually, adjust quality, and export optimized images.", category: "Image & Video", url: "https://squoosh.app/", icon: "fa-compress" },
+      // 13. Remove backgrounds
+      { id: 58, name: "Remove.bg", description: "Remove image backgrounds automatically with AI. One-click background removal for product photos, portraits, and graphics.", category: "Image & Video", url: "https://remove.bg/", icon: "fa-eraser" },
+      // 14. Remove objects
+      { id: 59, name: "Cleanup.pictures", description: "Remove objects, people, text, and defects from images with AI. Magic eraser tool that fills in backgrounds seamlessly.", category: "Image & Video", url: "https://cleanup.pictures/", icon: "fa-wand-magic" },
+      // 15. Remove video backgrounds
+      { id: 60, name: "Unscreen", description: "Remove video backgrounds without a green screen. AI-powered background removal for videos and GIFs, no editing skills needed.", category: "Image & Video", url: "https://unscreen.com/", icon: "fa-film" },
+      // 16. Beautiful code images
+      { id: 61, name: "Carbon", description: "Create beautiful images of your code. Customize syntax themes, fonts, backgrounds, and export for social media, presentations, or documentation.", category: "Code & Developer Tools", url: "https://carbon.now.sh/", icon: "fa-camera" },
+      // 17. Code screenshots
+      { id: 62, name: "Ray.so", description: "Create elegant code screenshots. Multiple themes, padding options, and export formats. Perfect for sharing code snippets in blog posts or slides.", category: "Code & Developer Tools", url: "https://ray.so/", icon: "fa-crop" },
+      // 18. Product mockups
+      { id: 63, name: "Shots.so", description: "Create beautiful product mockups. Device frames (iPhone, MacBook, browser), gradient backgrounds, and 3D transforms for screenshots.", category: "Code & Developer Tools", url: "https://shots.so/", icon: "fa-mobile-screen" },
+      // 19. Create mockups
+      { id: 64, name: "SmartMockups", description: "Create stunning product mockups with 1000+ templates. Generate realistic device mockups from your screenshots in seconds.", category: "Code & Developer Tools", url: "https://smartmockups.com/", icon: "fa-desktop" },
+      // 20. Check data breaches
+      { id: 65, name: "Have I Been Pwned", description: "Check if your email or phone number has been in data breaches. 12B+ breached accounts from thousands of data leaks.", category: "Privacy & Security", url: "https://haveibeenpwned.com/", icon: "fa-shield-hal" },
+      // 21. Scan files & URLs
+      { id: 66, name: "VirusTotal", description: "Scan files and URLs for malware with 70+ antivirus engines. Analyze suspicious files, domains, and IPs for security threats.", category: "Privacy & Security", url: "https://virustotal.com/", icon: "fa-virus" },
+      // 22. Self-destructing notes
+      { id: 67, name: "Privnote", description: "Self-destructing notes. Send encrypted messages that self-destruct after being read. No signup, no tracking, maximum privacy.", category: "Privacy & Security", url: "https://privnote.com/", icon: "fa-note-sticky" },
+      // 23. Temporary email
+      { id: 68, name: "Temp-Mail", description: "Temporary email addresses. Disposable email for signups, verification, and spam protection. Multiple domains, no registration required.", category: "Privacy & Security", url: "https://temp-mail.org/", icon: "fa-envelope" },
+      // 24. Temporary file sharing
+      { id: 69, name: "File.io", description: "Temporary file sharing. Upload files and get a link that self-destructs after download. Encrypted storage with no account needed.", category: "Privacy & Security", url: "https://file.io/", icon: "fa-paperclip" },
+      // 25. Save webpages
+      { id: 70, name: "Archive.ph", description: "Save webpages permanently. Create snapshots of web pages that will never change. Bypass paywalls and preserve content.", category: "Privacy & Security", url: "https://archive.ph/", icon: "fa-floppy-disk" },
+      // 26. Find similar websites
+      { id: 71, name: "SimilarSites", description: "Find similar websites. Enter a URL and discover related sites in the same niche. Great for competitive research and finding alternatives.", category: "Web Utilities", url: "https://similarsites.com/", icon: "fa-sitemap" },
+      // 27. Explore global radio
+      { id: 72, name: "Radio Garden", description: "Explore global radio stations on a 3D globe. Spin the world and listen to live radio from any city. 30,000+ stations worldwide.", category: "Music & Audio", url: "https://radio.garden/", icon: "fa-globe" },
+      // 28. Discover music genres
+      { id: 73, name: "Every Noise", description: "Discover music genres. Interactive map of 6,000+ genres with audio samples. From vaporwave to shoegaze, explore the entire musical spectrum.", category: "Music & Audio", url: "https://everynoise.com/", icon: "fa-music" },
+      // 29. Find songs from shows
+      { id: 74, name: "Tunefind", description: "Find songs from TV shows and movies. Search by episode, character moment, or scene description to identify that song stuck in your head.", category: "Music & Audio", url: "https://tunefind.com/", icon: "fa-tv-music" },
+      // 30. Focus music
+      { id: 75, name: "Music for Programming", description: "Focus music curated for coding sessions. Ambient, electronic, and instrumental mixes designed to enhance concentration and flow state.", category: "Music & Audio", url: "https://musicforprogramming.net/", icon: "fa-headphones" },
+      // 31. Custom background sounds
+      { id: 76, name: "myNoise", description: "Custom background sounds. 200+ sound generators (rain, keyboards, coffee shop, storms) with customizable frequency profiles for focus and relaxation.", category: "Music & Audio", url: "https://mynoise.net/", icon: "fa-sliders" },
+      // 32. Café ambience
+      { id: 77, name: "Coffitivity", description: "Café ambience for focus. Studies show moderate ambient noise boosts creative thinking. Stream coffee shop sounds while working.", category: "Music & Audio", url: "https://coffitivity.com/", icon: "fa-mug-hot" },
+      // 33. Research assistant
+      { id: 78, name: "Elicit", description: "AI research assistant that automates literature reviews. Find relevant papers, extract key information, and synthesize findings across studies.", category: "AI & Problem Solving", url: "https://elicit.org/", icon: "fa-flask" },
+      // 34. Research-backed answers
+      { id: 79, name: "Consensus", description: "AI-powered search engine for scientific research. Get evidence-backed answers from peer-reviewed studies with citation tracking.", category: "AI & Problem Solving", url: "https://consensus.app/", icon: "fa-check-double" },
+      // 35. Research connections
+      { id: 80, name: "Connected Papers", description: "Explore research connections visually. Enter a paper and see a graph of related work, citations, and prior/derivative studies.", category: "AI & Problem Solving", url: "https://connectedpapers.com/", icon: "fa-project-diagram" },
+      // 36. Academic search
+      { id: 81, name: "Semantic Scholar", description: "AI-powered academic search engine from Allen Institute. 200M+ papers with citation context, influential citations, and research feeds.", category: "AI & Problem Solving", url: "https://semanticscholar.org/", icon: "fa-search" },
+      // 37. Understand research papers
+      { id: 82, name: "SciSpace", description: "Understand research papers with AI. Get explanations of complex jargon, math, and tables. Chat with PDFs and extract key insights.", category: "AI & Problem Solving", url: "https://scispace.com/", icon: "fa-comments" },
+      // 38. YouTube summaries
+      { id: 83, name: "Summarize.tech", description: "YouTube summaries powered by AI. Get concise summaries of long videos, lectures, and tutorials without watching the entire thing.", category: "AI & Problem Solving", url: "https://summarize.tech/", icon: "fa-scissors" },
+      // 39. AI for developers
+      { id: 84, name: "Phind", description: "AI search engine for developers. Get code answers with explanations, documentation references, and working examples for technical questions.", category: "AI & Problem Solving", url: "https://phind.com/", icon: "fa-code" },
+      // 40. Test regex — already id 2 (Regex101) — kept above
+      // 41. Format code
+      { id: 85, name: "CodeBeautify", description: "Format, beautify, and validate code. Supports JSON, XML, HTML, CSS, JavaScript, SQL, and more. Also includes converters and minifiers.", category: "Code & Developer Tools", url: "https://codebeautify.org/", icon: "fa-broom" },
+      // 42. Format JSON — already id 1 (JSON Formatter) — kept above
+      // 43. Understand terminal commands
+      { id: 86, name: "Explainshell", description: "Understand terminal commands. Paste any shell command and get an explanation of each part: flags, arguments, pipes, and operators.", category: "Code & Developer Tools", url: "https://explainshell.com/", icon: "fa-terminal" },
+      // 44. Bookmark manager
+      { id: 87, name: "Raindrop.io", description: "Bookmark manager for the modern web. Save, organize, and share bookmarks with collections, tags, full-text search, and cross-device sync.", category: "Web Utilities", url: "https://raindrop.io/", icon: "fa-bookmark" },
+      // 45. Check outages
+      { id: 88, name: "DownDetector", description: "Check outages and problems. Real-time status for websites, services, and apps. User-reported and monitored service outages worldwide.", category: "Web Utilities", url: "https://downdetector.com/", icon: "fa-signal" },
+      // 46. Reverse image search
+      { id: 89, name: "TinEye", description: "Reverse image search engine. Upload an image to find where it appears online, check for unauthorized use, and discover higher-resolution versions.", category: "Image & Video", url: "https://tineye.com/", icon: "fa-magnifying-glass" },
+      // 47. Internet speed test
+      { id: 90, name: "Fast.com", description: "Internet speed test by Netflix. Simple, ad-free test measuring download speed, upload speed, and connection latency on any device.", category: "Web Utilities", url: "https://fast.com/", icon: "fa-gauge" },
+      // 48. PDF tools
+      { id: 91, name: "Smallpdf", description: "All-in-one PDF toolkit: compress, convert, merge, split, edit, e-sign, and protect PDFs. Clean interface, works entirely in the browser, no installation.", category: "E-Sign & Docs", url: "https://smallpdf.com/", icon: "fa-file-pdf" },
+      // 49. Merge/split PDFs
       { id: 92, name: "iLovePDF", description: "Merge, split, compress, convert, and edit PDFs. 25+ free PDF tools with batch processing and no watermarks.", category: "Web Utilities", url: "https://ilovepdf.com/", icon: "fa-file-pdf" },
-
-      // Additional Tools from original list that were mentioned
-      { id: 93, name: "Squoosh (Google)", description: "Compress images with visual comparison. Adjust quality settings and compare compression algorithms side-by-side. Export optimized images instantly.", category: "Image & Video", url: "https://squoosh.app/", icon: "fa-image" },
+      // 50. Temporary email
+      { id: 93, name: "10MinuteMail", description: "Temporary email that lasts 10 minutes (extendable). Keep your real inbox clean from spam and unwanted newsletters.", category: "Privacy & Security", url: "https://10minutemail.com/", icon: "fa-clock" },
     ];
-    
-    // get unique categories from the extended database
+
     function getUniqueCategories() {
       const cats = toolsDatabase.map(t => t.category);
       return [...new Set(cats)].sort();
@@ -511,17 +276,15 @@
     let activeCategory = "All";
     let searchQuery = "";
 
-    // DOM elements
     const toolsContainer = document.getElementById("toolsGridContainer");
     const categoryContainer = document.getElementById("categoryFiltersContainer");
     const searchInput = document.getElementById("searchInput");
     const darkToggle = document.getElementById("darkModeToggle");
 
-    // Helper: filter tools based on category & search
     function getFilteredTools() {
       return toolsDatabase.filter(tool => {
         const matchesCategory = activeCategory === "All" || tool.category === activeCategory;
-        const matchesSearch = searchQuery === "" || 
+        const matchesSearch = searchQuery === "" ||
           tool.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
           tool.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
           tool.category.toLowerCase().includes(searchQuery.toLowerCase());
@@ -529,7 +292,6 @@
       });
     }
 
-    // render category pills
     function renderCategoryFilters() {
       const categories = getUniqueCategories();
       const buttonsHtml = `
@@ -539,114 +301,55 @@
         `).join('')}
       `;
       categoryContainer.innerHTML = buttonsHtml;
-      
-      // attach event listeners to each filter button
+
       document.querySelectorAll(".filter-btn").forEach(btn => {
-        btn.addEventListener("click", (e) => {
+        btn.addEventListener("click", () => {
           const category = btn.getAttribute("data-category");
           if (category) {
             activeCategory = category;
-            searchQuery = searchInput.value; 
-            renderCategoryFilters();  // re-render to update active styles
+            searchQuery = searchInput.value;
+            renderCategoryFilters();
             renderTools();
           }
         });
       });
     }
 
-    // get icon class mapping
     function getIconClass(iconName) {
       const iconMap = {
-        "fa-brackets-curly": "fas fa-brackets-curly",
-        "fa-terminal": "fas fa-terminal",
-        "fa-magic": "fas fa-magic",
-        "fa-pen-fancy": "fas fa-pen-fancy",
-        "fa-cloud-arrow-up": "fas fa-cloud-arrow-up",
-        "fa-database": "fas fa-database",
-        "fa-globe": "fas fa-globe",
-        "fa-palette": "fas fa-palette",
-        "fa-eye-dropper": "fas fa-eye-dropper",
-        "fa-fill-drip": "fas fa-fill-drip",
-        "fa-code-branch": "fas fa-code-branch",
-        "fa-diagram-project": "fas fa-diagram-project",
-        "fa-github": "fab fa-github",
-        "fa-gauge-high": "fas fa-gauge-high",
-        "fa-chart-line": "fas fa-chart-line",
-        "fa-browsers": "fas fa-browsers",
-        "fa-wrench": "fas fa-wrench",
-        "fa-exchange-alt": "fas fa-exchange-alt",
-        "fa-code-compare": "fas fa-code-compare",
-        "fa-table": "fas fa-table",
-        "fa-laptop-code": "fas fa-laptop-code",
-        "fa-share": "fas fa-share",
-        "fa-file-arrow-up": "fas fa-file-arrow-up",
-        "fa-brain": "fas fa-brain",
-        "fa-tachometer-alt": "fas fa-tachometer-alt",
-        "fa-robot": "fas fa-robot",
-        "fa-kitchen-set": "fas fa-kitchen-set",
-        "fa-archive": "fas fa-archive",
-        "fa-file-signature": "fas fa-file-signature",
-        "fa-pen-square": "fas fa-pen-square",
-        "fa-file-pdf": "fas fa-file-pdf",
-        "fa-file-alt": "fas fa-file-alt",
-        "fa-mobile-screen": "fas fa-mobile-screen-button",
-        "fa-basketball": "fas fa-basketball",
-        "fa-sitemap": "fas fa-sitemap",
-        "fa-pen-ruler": "fas fa-pen-ruler",
-        "fa-code": "fas fa-code",
-        "fa-pencil": "fas fa-pencil",
-        "fa-vector-square": "fas fa-vector-square",
-        "fa-cubes": "fas fa-cubes",
-        "fa-wand-magic-sparkles": "fas fa-wand-magic-sparkles",
-        "fa-stitch": "fas fa-stitch",
-        "fa-paintbrush": "fas fa-paintbrush",
-        "fa-shield-hal": "fas fa-shield-hal",
-        "fa-chart-simple": "fas fa-chart-simple",
-        "fa-unlock": "fas fa-unlock",
-        "fa-book-open": "fas fa-book-open",
-        "fa-journal-whills": "fas fa-journal-whills",
-        "fa-book": "fas fa-book",
-        "fa-graduation-cap": "fas fa-graduation-cap",
-        "fa-landmark": "fas fa-landmark",
-        "fa-arrows-rotate": "fas fa-arrows-rotate",
-        "fa-tv": "fas fa-tv",
-        "fa-calculator": "fas fa-calculator",
-        "fa-flask": "fas fa-flask",
-        "fa-check-double": "fas fa-check-double",
-        "fa-project-diagram": "fas fa-project-diagram",
-        "fa-search": "fas fa-search",
-        "fa-comments": "fas fa-comments",
-        "fa-scissors": "fas fa-scissors",
-        "fa-image": "fas fa-image",
-        "fa-compress": "fas fa-compress",
-        "fa-eraser": "fas fa-eraser",
-        "fa-wand-magic": "fas fa-wand-magic",
-        "fa-film": "fas fa-film",
-        "fa-magnifying-glass": "fas fa-magnifying-glass",
-        "fa-camera": "fas fa-camera",
-        "fa-crop": "fas fa-crop",
-        "fa-desktop": "fas fa-desktop",
-        "fa-broom": "fas fa-broom",
-        "fa-virus": "fas fa-virus",
-        "fa-note-sticky": "fas fa-note-sticky",
-        "fa-envelope": "fas fa-envelope",
-        "fa-clock": "fas fa-clock",
-        "fa-paperclip": "fas fa-paperclip",
-        "fa-floppy-disk": "fas fa-floppy-disk",
-        "fa-music": "fas fa-music",
-        "fa-tv-music": "fas fa-tv",
-        "fa-headphones": "fas fa-headphones",
-        "fa-sliders": "fas fa-sliders",
-        "fa-mug-hot": "fas fa-mug-hot",
-        "fa-bookmark": "fas fa-bookmark",
-        "fa-signal": "fas fa-signal",
-        "fa-gauge": "fas fa-gauge",
+        "fa-brackets-curly": "fas fa-brackets-curly", "fa-terminal": "fas fa-terminal", "fa-magic": "fas fa-magic",
+        "fa-pen-fancy": "fas fa-pen-fancy", "fa-cloud-arrow-up": "fas fa-cloud-arrow-up", "fa-database": "fas fa-database",
+        "fa-globe": "fas fa-globe", "fa-palette": "fas fa-palette", "fa-eye-dropper": "fas fa-eye-dropper",
+        "fa-fill-drip": "fas fa-fill-drip", "fa-code-branch": "fas fa-code-branch", "fa-diagram-project": "fas fa-diagram-project",
+        "fa-github": "fab fa-github", "fa-gauge-high": "fas fa-gauge-high", "fa-chart-line": "fas fa-chart-line",
+        "fa-browsers": "fas fa-browsers", "fa-wrench": "fas fa-wrench", "fa-exchange-alt": "fas fa-exchange-alt",
+        "fa-code-compare": "fas fa-code-compare", "fa-table": "fas fa-table", "fa-laptop-code": "fas fa-laptop-code",
+        "fa-share": "fas fa-share", "fa-file-arrow-up": "fas fa-file-arrow-up", "fa-brain": "fas fa-brain",
+        "fa-tachometer-alt": "fas fa-tachometer-alt", "fa-robot": "fas fa-robot", "fa-kitchen-set": "fas fa-kitchen-set",
+        "fa-archive": "fas fa-archive", "fa-file-signature": "fas fa-file-signature", "fa-pen-square": "fas fa-pen-square",
+        "fa-file-pdf": "fas fa-file-pdf", "fa-file-alt": "fas fa-file-alt", "fa-mobile-screen": "fas fa-mobile-screen-button",
+        "fa-basketball": "fas fa-basketball", "fa-sitemap": "fas fa-sitemap", "fa-pen-ruler": "fas fa-pen-ruler",
+        "fa-code": "fas fa-code", "fa-pencil": "fas fa-pencil", "fa-vector-square": "fas fa-vector-square",
+        "fa-cubes": "fas fa-cubes", "fa-wand-magic-sparkles": "fas fa-wand-magic-sparkles", "fa-stitch": "fas fa-stitch",
+        "fa-paintbrush": "fas fa-paintbrush", "fa-shield-hal": "fas fa-shield-hal", "fa-chart-simple": "fas fa-chart-simple",
+        "fa-unlock": "fas fa-unlock", "fa-book-open": "fas fa-book-open", "fa-journal-whills": "fas fa-journal-whills",
+        "fa-book": "fas fa-book", "fa-graduation-cap": "fas fa-graduation-cap", "fa-landmark": "fas fa-landmark",
+        "fa-arrows-rotate": "fas fa-arrows-rotate", "fa-tv": "fas fa-tv", "fa-calculator": "fas fa-calculator",
+        "fa-flask": "fas fa-flask", "fa-check-double": "fas fa-check-double", "fa-project-diagram": "fas fa-project-diagram",
+        "fa-search": "fas fa-search", "fa-comments": "fas fa-comments", "fa-scissors": "fas fa-scissors",
+        "fa-image": "fas fa-image", "fa-compress": "fas fa-compress", "fa-eraser": "fas fa-eraser",
+        "fa-wand-magic": "fas fa-wand-magic", "fa-film": "fas fa-film", "fa-magnifying-glass": "fas fa-magnifying-glass",
+        "fa-camera": "fas fa-camera", "fa-crop": "fas fa-crop", "fa-desktop": "fas fa-desktop",
+        "fa-broom": "fas fa-broom", "fa-virus": "fas fa-virus", "fa-note-sticky": "fas fa-note-sticky",
+        "fa-envelope": "fas fa-envelope", "fa-clock": "fas fa-clock", "fa-paperclip": "fas fa-paperclip",
+        "fa-floppy-disk": "fas fa-floppy-disk", "fa-music": "fas fa-music", "fa-tv-music": "fas fa-tv",
+        "fa-headphones": "fas fa-headphones", "fa-sliders": "fas fa-sliders", "fa-mug-hot": "fas fa-mug-hot",
+        "fa-bookmark": "fas fa-bookmark", "fa-signal": "fas fa-signal", "fa-gauge": "fas fa-gauge",
         "default": "fas fa-tools"
       };
       return iconMap[iconName] || "fas fa-code";
     }
-    
-    // helper for safe escaping
+
     function escapeHtml(str) {
       if (!str) return '';
       return str.replace(/[&<>]/g, function(m) {
@@ -663,39 +366,28 @@
         toolsContainer.innerHTML = `<div class="no-results"><i class="fas fa-binoculars"></i> No matching tools found.<br> Try different keywords or clear filters ✨</div>`;
         return;
       }
-      
       const cardsHtml = filtered.map(tool => {
         const iconClass = getIconClass(tool.icon);
         const toolName = escapeHtml(tool.name);
         const toolDesc = escapeHtml(tool.description);
         const toolCategory = escapeHtml(tool.category);
-        const toolUrl = tool.url;
         return `
           <div class="tool-card" data-id="${tool.id}">
-            <div class="tool-icon">
-              <i class="${iconClass}"></i>
-            </div>
-            <div class="tool-title">
-              ${toolName}
-              <span class="tool-badge">${toolCategory}</span>
-            </div>
-            <div class="tool-desc">
-              ${toolDesc}
-            </div>
+            <div class="tool-icon"><i class="${iconClass}"></i></div>
+            <div class="tool-title">${toolName}<span class="tool-badge">${toolCategory}</span></div>
+            <div class="tool-desc">${toolDesc}</div>
             <div class="tool-footer">
               <span class="tool-category"><i class="fas fa-tag"></i> ${toolCategory}</span>
-              <a href="${toolUrl}" class="tool-link" target="_blank" rel="noopener noreferrer">
+              <a href="${tool.url}" class="tool-link" target="_blank" rel="noopener noreferrer">
                 <i class="fas fa-external-link-alt"></i> Open
               </a>
             </div>
           </div>
         `;
       }).join('');
-      
       toolsContainer.innerHTML = cardsHtml;
     }
-    
-    // event handlers for search with debounce
+
     let debounceTimeout;
     function handleSearchInput() {
       clearTimeout(debounceTimeout);
@@ -704,47 +396,33 @@
         renderTools();
       }, 250);
     }
-    
-    // Dark mode handling
+
     function initDarkMode() {
       const stored = localStorage.getItem('devtoolkit_theme');
       const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
       const isDark = stored === 'dark' || (stored === null && prefersDark);
-      if (isDark) {
-        document.body.classList.add('dark');
-        updateToggleIcon(true);
-      } else {
-        document.body.classList.remove('dark');
-        updateToggleIcon(false);
-      }
+      if (isDark) { document.body.classList.add('dark'); updateToggleIcon(true); }
+      else { document.body.classList.remove('dark'); updateToggleIcon(false); }
     }
-    
+
     function updateToggleIcon(isDark) {
       const icon = darkToggle.querySelector('i');
       const span = darkToggle.querySelector('span');
-      if (isDark) {
-        icon.className = 'fas fa-sun';
-        span.innerText = 'Light mode';
-      } else {
-        icon.className = 'fas fa-moon';
-        span.innerText = 'Dark mode';
-      }
+      if (isDark) { icon.className = 'fas fa-sun'; span.innerText = 'Light mode'; }
+      else { icon.className = 'fas fa-moon'; span.innerText = 'Dark mode'; }
     }
-    
+
     function toggleDarkMode() {
       const isDark = document.body.classList.toggle('dark');
       localStorage.setItem('devtoolkit_theme', isDark ? 'dark' : 'light');
       updateToggleIcon(isDark);
     }
-    
-    // Helper to announce total tools count 
+
     function logToolkitStats() {
       const categories = getUniqueCategories();
       console.log(`🚀 DevToolkit Hub loaded: ${toolsDatabase.length} tools across ${categories.length} categories.`);
-      console.log(`📄 Footer notice: © 2026 Foxwide Company Limited — Innovation meets reliability. All rights reserved.`);
     }
-    
-    // initial render & event binding
+
     function init() {
       renderCategoryFilters();
       renderTools();
@@ -753,7 +431,7 @@
       darkToggle.addEventListener('click', toggleDarkMode);
       searchInput.addEventListener('input', handleSearchInput);
     }
-    
+
     init();
   </script>
 </body>
